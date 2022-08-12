@@ -26,6 +26,8 @@ public class FramePrincipal extends javax.swing.JFrame {
         Fondo = new PanelFondo("/ed/grupo4/resources/images/Fondo.png");
         Opciones = new PanelImagen("/ed/grupo4/resources/images/Menuopc.png");
         jPanel1 = new PanelImagen("/ed/grupo4/resources/images/inicio3.png");
+        jPanel2 = new PanelImagen("/ed/grupo4/resources/images/agregar3.png");
+        jPanel3 = new PanelImagen("/ed/grupo4/resources/images/Salir3.png");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1280, 720));
@@ -35,6 +37,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         Opciones.setBackground(new java.awt.Color(204, 204, 204));
         Opciones.setPreferredSize(new java.awt.Dimension(1280, 220));
 
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.setPreferredSize(new java.awt.Dimension(60, 60));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -48,6 +51,33 @@ public class FramePrincipal extends javax.swing.JFrame {
             .addGap(0, 60, Short.MAX_VALUE)
         );
 
+        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel2.setPreferredSize(new java.awt.Dimension(60, 60));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+
+        jPanel3.setPreferredSize(new java.awt.Dimension(60, 60));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout OpcionesLayout = new javax.swing.GroupLayout(Opciones);
         Opciones.setLayout(OpcionesLayout);
         OpcionesLayout.setHorizontalGroup(
@@ -55,14 +85,26 @@ public class FramePrincipal extends javax.swing.JFrame {
             .addGroup(OpcionesLayout.createSequentialGroup()
                 .addGap(326, 326, 326)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(894, Short.MAX_VALUE))
+                .addGap(76, 76, 76)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OpcionesLayout.createSequentialGroup()
+                .addGap(672, 672, 672)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(547, 547, 547))
         );
         OpcionesLayout.setVerticalGroup(
             OpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OpcionesLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
+            .addGroup(OpcionesLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(142, 142, 142))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         Fondo.add(Opciones, java.awt.BorderLayout.SOUTH);
@@ -110,5 +152,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel Fondo;
     private javax.swing.JPanel Opciones;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }
