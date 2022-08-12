@@ -1,7 +1,10 @@
 package ed.grupo4.GUI;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 public class FramePrincipal extends javax.swing.JFrame {
 
@@ -27,9 +30,9 @@ public class FramePrincipal extends javax.swing.JFrame {
         Opciones = new PanelImagen("/ed/grupo4/resources/images/Menuopc.png");
         btnInicio = new PanelImagen("/ed/grupo4/resources/images/inicio3.png");
         btnAgregarPasajero = new PanelImagen("/ed/grupo4/resources/images/agregar3.png");
-        btnAgregarPasajero1 = new PanelImagen("/ed/grupo4/resources/images/agregar3.png");
-        btnAgregarPasajero2 = new PanelImagen("/ed/grupo4/resources/images/abordar.png");
-        btnAgregarPasajero3 = new PanelImagen("/ed/grupo4/resources/images/cola.png");
+        btnControlDeCabinas = new PanelImagen("/ed/grupo4/resources/images/agregar3.png");
+        btnAbordar = new PanelImagen("/ed/grupo4/resources/images/abordar.png");
+        btnColas = new PanelImagen("/ed/grupo4/resources/images/cola.png");
         btnAdministrador = new PanelImagen("/ed/grupo4/resources/images/Administrador.png");
         btnSalir = new PanelImagen("/ed/grupo4/resources/images/Salir3.png");
         inicio1 = new ed.grupo4.GUI.Inicio();
@@ -45,8 +48,8 @@ public class FramePrincipal extends javax.swing.JFrame {
         btnInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnInicio.setPreferredSize(new java.awt.Dimension(60, 60));
         btnInicio.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnInicioMouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnInicioMouseReleased(evt);
             }
         });
 
@@ -64,8 +67,8 @@ public class FramePrincipal extends javax.swing.JFrame {
         btnAgregarPasajero.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAgregarPasajero.setPreferredSize(new java.awt.Dimension(60, 60));
         btnAgregarPasajero.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAgregarPasajeroMouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnAgregarPasajeroMouseReleased(evt);
             }
         });
 
@@ -80,68 +83,68 @@ public class FramePrincipal extends javax.swing.JFrame {
             .addGap(0, 60, Short.MAX_VALUE)
         );
 
-        btnAgregarPasajero1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAgregarPasajero1.setPreferredSize(new java.awt.Dimension(60, 60));
-        btnAgregarPasajero1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAgregarPasajero1MouseClicked(evt);
+        btnControlDeCabinas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnControlDeCabinas.setPreferredSize(new java.awt.Dimension(60, 60));
+        btnControlDeCabinas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnControlDeCabinasMouseReleased(evt);
             }
         });
 
-        javax.swing.GroupLayout btnAgregarPasajero1Layout = new javax.swing.GroupLayout(btnAgregarPasajero1);
-        btnAgregarPasajero1.setLayout(btnAgregarPasajero1Layout);
-        btnAgregarPasajero1Layout.setHorizontalGroup(
-            btnAgregarPasajero1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout btnControlDeCabinasLayout = new javax.swing.GroupLayout(btnControlDeCabinas);
+        btnControlDeCabinas.setLayout(btnControlDeCabinasLayout);
+        btnControlDeCabinasLayout.setHorizontalGroup(
+            btnControlDeCabinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 60, Short.MAX_VALUE)
         );
-        btnAgregarPasajero1Layout.setVerticalGroup(
-            btnAgregarPasajero1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        btnControlDeCabinasLayout.setVerticalGroup(
+            btnControlDeCabinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 60, Short.MAX_VALUE)
         );
 
-        btnAgregarPasajero2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAgregarPasajero2.setPreferredSize(new java.awt.Dimension(60, 60));
-        btnAgregarPasajero2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAgregarPasajero2MouseClicked(evt);
+        btnAbordar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAbordar.setPreferredSize(new java.awt.Dimension(60, 60));
+        btnAbordar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnAbordarMouseReleased(evt);
             }
         });
 
-        javax.swing.GroupLayout btnAgregarPasajero2Layout = new javax.swing.GroupLayout(btnAgregarPasajero2);
-        btnAgregarPasajero2.setLayout(btnAgregarPasajero2Layout);
-        btnAgregarPasajero2Layout.setHorizontalGroup(
-            btnAgregarPasajero2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout btnAbordarLayout = new javax.swing.GroupLayout(btnAbordar);
+        btnAbordar.setLayout(btnAbordarLayout);
+        btnAbordarLayout.setHorizontalGroup(
+            btnAbordarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 60, Short.MAX_VALUE)
         );
-        btnAgregarPasajero2Layout.setVerticalGroup(
-            btnAgregarPasajero2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        btnAbordarLayout.setVerticalGroup(
+            btnAbordarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 60, Short.MAX_VALUE)
         );
 
-        btnAgregarPasajero3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAgregarPasajero3.setPreferredSize(new java.awt.Dimension(60, 60));
-        btnAgregarPasajero3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAgregarPasajero3MouseClicked(evt);
+        btnColas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnColas.setPreferredSize(new java.awt.Dimension(60, 60));
+        btnColas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnColasMouseReleased(evt);
             }
         });
 
-        javax.swing.GroupLayout btnAgregarPasajero3Layout = new javax.swing.GroupLayout(btnAgregarPasajero3);
-        btnAgregarPasajero3.setLayout(btnAgregarPasajero3Layout);
-        btnAgregarPasajero3Layout.setHorizontalGroup(
-            btnAgregarPasajero3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout btnColasLayout = new javax.swing.GroupLayout(btnColas);
+        btnColas.setLayout(btnColasLayout);
+        btnColasLayout.setHorizontalGroup(
+            btnColasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 60, Short.MAX_VALUE)
         );
-        btnAgregarPasajero3Layout.setVerticalGroup(
-            btnAgregarPasajero3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        btnColasLayout.setVerticalGroup(
+            btnColasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 60, Short.MAX_VALUE)
         );
 
         btnAdministrador.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAdministrador.setPreferredSize(new java.awt.Dimension(60, 60));
         btnAdministrador.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAdministradorMouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnAdministradorMouseReleased(evt);
             }
         });
 
@@ -159,8 +162,8 @@ public class FramePrincipal extends javax.swing.JFrame {
         btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSalir.setPreferredSize(new java.awt.Dimension(60, 60));
         btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSalirMouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnSalirMouseReleased(evt);
             }
         });
 
@@ -185,11 +188,11 @@ public class FramePrincipal extends javax.swing.JFrame {
                 .addGap(80, 80, 80)
                 .addComponent(btnAgregarPasajero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80)
-                .addComponent(btnAgregarPasajero1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnControlDeCabinas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80)
-                .addComponent(btnAgregarPasajero2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAbordar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80)
-                .addComponent(btnAgregarPasajero3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnColas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(330, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OpcionesLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -204,7 +207,7 @@ public class FramePrincipal extends javax.swing.JFrame {
                 .addGroup(OpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(OpcionesLayout.createSequentialGroup()
                         .addGap(5, 5, 5)
-                        .addComponent(btnAgregarPasajero1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnControlDeCabinas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(OpcionesLayout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -213,10 +216,10 @@ public class FramePrincipal extends javax.swing.JFrame {
                         .addComponent(btnAgregarPasajero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(OpcionesLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(btnAgregarPasajero2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnAbordar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OpcionesLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnAgregarPasajero3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnColas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addGroup(OpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -228,6 +231,7 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         inicio1.setMinimumSize(new java.awt.Dimension(833, 500));
         inicio1.setName(""); // NOI18N
+        inicio1.setPreferredSize(new java.awt.Dimension(1280, 475));
         Fondo.add(inicio1, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(Fondo, java.awt.BorderLayout.CENTER);
@@ -235,33 +239,35 @@ public class FramePrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAgregarPasajeroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarPasajeroMouseClicked
-        ((PanelFondo)Fondo).moverLogoAEsquinaIzquierda();
-    }//GEN-LAST:event_btnAgregarPasajeroMouseClicked
+    
+    private void btnInicioMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioMouseReleased
 
-    private void btnInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioMouseClicked
         ((PanelFondo)Fondo).moverLogoAlCentro();
-    }//GEN-LAST:event_btnInicioMouseClicked
+    }//GEN-LAST:event_btnInicioMouseReleased
 
-    private void btnAgregarPasajero1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarPasajero1MouseClicked
+    private void btnAgregarPasajeroMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarPasajeroMouseReleased
         ((PanelFondo)Fondo).moverLogoAEsquinaIzquierda();
-    }//GEN-LAST:event_btnAgregarPasajero1MouseClicked
+    }//GEN-LAST:event_btnAgregarPasajeroMouseReleased
 
-    private void btnAgregarPasajero2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarPasajero2MouseClicked
+    private void btnControlDeCabinasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnControlDeCabinasMouseReleased
         ((PanelFondo)Fondo).moverLogoAEsquinaIzquierda();
-    }//GEN-LAST:event_btnAgregarPasajero2MouseClicked
+    }//GEN-LAST:event_btnControlDeCabinasMouseReleased
 
-    private void btnAgregarPasajero3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarPasajero3MouseClicked
+    private void btnAbordarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAbordarMouseReleased
         ((PanelFondo)Fondo).moverLogoAEsquinaIzquierda();
-    }//GEN-LAST:event_btnAgregarPasajero3MouseClicked
+    }//GEN-LAST:event_btnAbordarMouseReleased
 
-    private void btnAdministradorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdministradorMouseClicked
-        ((PanelFondo)Fondo).moverLogoAlCentro();
-    }//GEN-LAST:event_btnAdministradorMouseClicked
+    private void btnColasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnColasMouseReleased
+        ((PanelFondo)Fondo).moverLogoAEsquinaIzquierda();
+    }//GEN-LAST:event_btnColasMouseReleased
 
-    private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
+    private void btnSalirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseReleased
         dispose();
-    }//GEN-LAST:event_btnSalirMouseClicked
+    }//GEN-LAST:event_btnSalirMouseReleased
+
+    private void btnAdministradorMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdministradorMouseReleased
+        ((PanelFondo)Fondo).moverLogoAlCentro();
+    }//GEN-LAST:event_btnAdministradorMouseReleased
 
     /**
      * @param args the command line arguments
@@ -300,11 +306,11 @@ public class FramePrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Fondo;
     private javax.swing.JPanel Opciones;
+    private javax.swing.JPanel btnAbordar;
     private javax.swing.JPanel btnAdministrador;
     private javax.swing.JPanel btnAgregarPasajero;
-    private javax.swing.JPanel btnAgregarPasajero1;
-    private javax.swing.JPanel btnAgregarPasajero2;
-    private javax.swing.JPanel btnAgregarPasajero3;
+    private javax.swing.JPanel btnColas;
+    private javax.swing.JPanel btnControlDeCabinas;
     private javax.swing.JPanel btnInicio;
     private javax.swing.JPanel btnSalir;
     private ed.grupo4.GUI.Inicio inicio1;
