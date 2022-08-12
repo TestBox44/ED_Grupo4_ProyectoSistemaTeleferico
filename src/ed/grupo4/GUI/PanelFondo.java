@@ -20,11 +20,11 @@ public class PanelFondo extends PanelImagen{
         
         public PanelFondo(String direcciondeimagen) {
             super(direcciondeimagen);
-            logo = new ImageIcon(getClass().getResource("/ed/grupo4/resources/images/icono_casa.png")).getImage();
+            logo = new ImageIcon(getClass().getResource("/ed/grupo4/resources/images/Logo.png")).getImage();
             logoXCentro=(1280-logo.getWidth(null))/2;
             logoXEsquinaIzq=0;
             logoX=logoXCentro;
-            logoY=0;
+            logoY=20;
             rad=Math.PI/2;
             velocidad=0.06;
             tiempoDeRetraso=1000*1/60;
