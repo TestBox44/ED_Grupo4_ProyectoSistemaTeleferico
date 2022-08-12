@@ -23,7 +23,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Fondo = new PanelFondo("/ed/grupo4/resources/images/patron.jpg");
+        Fondo = new PanelFondo("/ed/grupo4/resources/images/Fondo.png");
         Opciones = new javax.swing.JPanel();
         btnInicio = new javax.swing.JLabel();
         btnPasajeros = new javax.swing.JLabel();
