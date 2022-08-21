@@ -38,7 +38,7 @@ public class Inicio extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         lblLimiteDeCola = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblversion = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1280, 500));
 
@@ -84,9 +84,9 @@ public class Inicio extends javax.swing.JPanel {
         jLabel6.setForeground(new java.awt.Color(0, 51, 102));
         jLabel6.setText("NOMBRE DE SISTEMA");
 
-        jLabel7.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 51, 102));
-        jLabel7.setText("version 2.0");
+        lblversion.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
+        lblversion.setForeground(new java.awt.Color(0, 51, 102));
+        lblversion.setText("versión 2.0");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -116,7 +116,7 @@ public class Inicio extends javax.swing.JPanel {
                 .addContainerGap(98, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel7)
+                .addComponent(lblversion)
                 .addGap(29, 29, 29))
         );
         jPanel1Layout.setVerticalGroup(
@@ -143,7 +143,7 @@ public class Inicio extends javax.swing.JPanel {
                     .addComponent(jLabel5)
                     .addComponent(lblLimiteDeCola))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
-                .addComponent(jLabel7)
+                .addComponent(lblversion)
                 .addGap(26, 26, 26))
         );
 
@@ -159,9 +159,9 @@ public class Inicio extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(90, 90, 90)
+                .addGap(110, 110, 110)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -173,11 +173,11 @@ public class Inicio extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAforo;
     private javax.swing.JLabel lblLimiteDeCola;
     private javax.swing.JLabel lblNumeroCabinas;
     private javax.swing.JLabel lblNumeroDePersonas;
+    private javax.swing.JLabel lblversion;
     // End of variables declaration//GEN-END:variables
 }

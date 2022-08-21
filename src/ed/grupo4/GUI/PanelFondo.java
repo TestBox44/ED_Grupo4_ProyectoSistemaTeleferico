@@ -17,14 +17,15 @@ public class PanelFondo extends PanelImagen{
         private Thread animacionMoverACentro;
         private Thread animacionMoverAEsquinaIzq;
         private Image logo;
+        private boolean animando=false;
         
         public PanelFondo(String direcciondeimagen) {
             super(direcciondeimagen);
             logo = new ImageIcon(getClass().getResource("/ed/grupo4/resources/images/Logo.png")).getImage();
             logoXCentro=(1280-logo.getWidth(null))/2;
-            logoXEsquinaIzq=0;
+            logoXEsquinaIzq=10;
             logoX=logoXCentro;
-            logoY=20;
+            logoY=10;
             rad=Math.PI/2;
             velocidad=0.06;
             tiempoDeRetraso=1000*1/60;
@@ -36,7 +37,9 @@ public class PanelFondo extends PanelImagen{
             g.drawImage(logo, logoX, logoY, null);
         }
         public void moverLogoAlCentro(){
-            animacionMoverACentro=new Thread(new Runnable() {
+            if(!animando){
+                animando=true;
+                animacionMoverACentro=new Thread(new Runnable() {
                 @Override
                 public void run() {
                     int desp=logoXCentro-logoXEsquinaIzq;
@@ -50,12 +53,16 @@ public class PanelFondo extends PanelImagen{
                         } catch (InterruptedException ex) {
                         }
                     }
+                    animando=false;
                 }
-            },"Animacion mover a centro");
-            animacionMoverACentro.start();
+                },"Animacion mover a centro");
+                animacionMoverACentro.start();
+            }
         }
         public void moverLogoAEsquinaIzquierda(){
-            animacionMoverAEsquinaIzq=new Thread(new Runnable() {
+            if(!animando){
+                animando=true;
+                animacionMoverAEsquinaIzq=new Thread(new Runnable() {
                 @Override
                 public void run() {
                     int desp=logoXCentro-logoXEsquinaIzq;
@@ -69,8 +76,10 @@ public class PanelFondo extends PanelImagen{
                         } catch (InterruptedException ex) {
                         }
                     }
+                    animando=false;
                 }
-            },"Animacion mover a esquina izquierda");
-            animacionMoverAEsquinaIzq.start();
+                },"Animacion mover a esquina izquierda");
+                animacionMoverAEsquinaIzq.start();
+            }
         }
 }

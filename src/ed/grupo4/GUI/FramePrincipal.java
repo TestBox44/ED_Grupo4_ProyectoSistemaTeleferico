@@ -2,21 +2,24 @@ package ed.grupo4.GUI;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import org.netbeans.lib.awtextra.AbsoluteLayout;
 
 public class FramePrincipal extends javax.swing.JFrame {
 
     /**
      * Creates new form FramePrincipal
      */
+    Inicio inicio=new Inicio();
     public FramePrincipal() {
         initComponents();
-        /*JPanel appinfo=new PanelRedondeado(20, Color.WHITE);
-        appinfo.setBounds(480,100,300,350);
-        appinfo.setOpaque(false);
-        Inicio.add(appinfo);*/
+        inicio.setBounds(0, 0, 1280, 500);
+        panelSlider.add(inicio);
+        panelSlider.setPanelActual(inicio);
+        //inicio.setLocation(-640,0);
     }
 
     /**
@@ -35,7 +38,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         btnColas = new PanelImagen("/ed/grupo4/resources/images/cola.png");
         btnAdministrador = new PanelImagen("/ed/grupo4/resources/images/Administrador.png");
         btnSalir = new PanelImagen("/ed/grupo4/resources/images/Salir3.png");
-        inicio1 = new ed.grupo4.GUI.Inicio();
+        panelSlider = new ed.grupo4.GUI.PanelSlider();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -229,10 +232,20 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         Fondo.add(Opciones, java.awt.BorderLayout.SOUTH);
 
-        inicio1.setMinimumSize(new java.awt.Dimension(833, 500));
-        inicio1.setName(""); // NOI18N
-        inicio1.setPreferredSize(new java.awt.Dimension(1280, 475));
-        Fondo.add(inicio1, java.awt.BorderLayout.CENTER);
+        panelSlider.setBackground(new java.awt.Color(255, 255, 255,0));
+
+        javax.swing.GroupLayout panelSliderLayout = new javax.swing.GroupLayout(panelSlider);
+        panelSlider.setLayout(panelSliderLayout);
+        panelSliderLayout.setHorizontalGroup(
+            panelSliderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1280, Short.MAX_VALUE)
+        );
+        panelSliderLayout.setVerticalGroup(
+            panelSliderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+        );
+
+        Fondo.add(panelSlider, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(Fondo, java.awt.BorderLayout.CENTER);
 
@@ -241,11 +254,12 @@ public class FramePrincipal extends javax.swing.JFrame {
 
     
     private void btnInicioMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioMouseReleased
-
+        panelSlider.moverPanelDerecha(inicio, inicio.getX(), 0, 0.06, 1000*1/60);
         ((PanelFondo)Fondo).moverLogoAlCentro();
     }//GEN-LAST:event_btnInicioMouseReleased
 
     private void btnAgregarPasajeroMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarPasajeroMouseReleased
+        panelSlider.moverPanelIzquierda(inicio, inicio.getX(), -1280, 0.06, 1000*1/60);
         ((PanelFondo)Fondo).moverLogoAEsquinaIzquierda();
     }//GEN-LAST:event_btnAgregarPasajeroMouseReleased
 
@@ -313,6 +327,6 @@ public class FramePrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel btnControlDeCabinas;
     private javax.swing.JPanel btnInicio;
     private javax.swing.JPanel btnSalir;
-    private ed.grupo4.GUI.Inicio inicio1;
+    private ed.grupo4.GUI.PanelSlider panelSlider;
     // End of variables declaration//GEN-END:variables
 }
