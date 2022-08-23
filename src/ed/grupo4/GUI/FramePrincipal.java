@@ -17,6 +17,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     PanelInicio panelInicio=new PanelInicio();
     PanelAgregarPasajeros panelAgregarPasajeros=new PanelAgregarPasajeros();
     PanelControlDeCabinas panelControlDeCabinas=new PanelControlDeCabinas();
+    PanelAbordarPasajeros panelAbordarPasajeros=new PanelAbordarPasajeros();
     
     public FramePrincipal() {
         initComponents();
@@ -24,9 +25,12 @@ public class FramePrincipal extends javax.swing.JFrame {
         panelInicio.setBounds(0, 0, 1280, 500);
         panelSlider.add(panelInicio);
         panelAgregarPasajeros.setBounds(1280, 0, 1280, 500);
+        panelAgregarPasajeros.desactivarCampos();
         panelSlider.add(panelAgregarPasajeros);
         panelControlDeCabinas.setBounds(1280, 0, 1280, 500);
         panelSlider.add(panelControlDeCabinas);
+        panelAbordarPasajeros.setBounds(1280, 0, 1280, 500);
+        panelSlider.add(panelAbordarPasajeros);
         panelSlider.setPanelActual(panelInicio);
         //inicio.setLocation(-640,0);
     }
@@ -264,6 +268,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     
     private void btnInicioMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioMouseReleased
         if(!panelSlider.getAnimando()){
+            if(panelSlider.getPanelActual().equals(panelAgregarPasajeros)) panelAgregarPasajeros.desactivarCampos();
             if(indiceDeOpcionActual!=0){
                 moverPanelDerecha(panelSlider.getPanelActual(), panelSlider.getPanelActual().getX(), 1280, 0.06, 1000*1/60);
                 moverPanelDerecha(panelInicio, panelInicio.getX(), 0, 0.06, 1000*1/60);
@@ -271,12 +276,13 @@ public class FramePrincipal extends javax.swing.JFrame {
                 panelSlider.setAnimando(true);
             }
             indiceDeOpcionActual=0;
+            ((PanelFondo)Fondo).moverLogoAlCentro();
         }
-        ((PanelFondo)Fondo).moverLogoAlCentro();
     }//GEN-LAST:event_btnInicioMouseReleased
 
     private void btnAgregarPasajeroMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarPasajeroMouseReleased
         if(!panelSlider.getAnimando()){
+            panelAgregarPasajeros.activarCampos();
             if(indiceDeOpcionActual<1){
                 panelAgregarPasajeros.setLocation(1280, panelAgregarPasajeros.getY());
                 moverPanelIzquierda(panelSlider.getPanelActual(), panelSlider.getPanelActual().getX(), -1280, 0.06, 1000*1/60);
@@ -291,12 +297,13 @@ public class FramePrincipal extends javax.swing.JFrame {
                 panelSlider.setAnimando(true);
             }
             indiceDeOpcionActual=1;
+            ((PanelFondo)Fondo).moverLogoAEsquinaIzquierda();
         }
-        ((PanelFondo)Fondo).moverLogoAEsquinaIzquierda();
     }//GEN-LAST:event_btnAgregarPasajeroMouseReleased
 
     private void btnControlDeCabinasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnControlDeCabinasMouseReleased
         if(!panelSlider.getAnimando()){
+            if(panelSlider.getPanelActual().equals(panelAgregarPasajeros)) panelAgregarPasajeros.desactivarCampos();
             if(indiceDeOpcionActual<2){
                 panelControlDeCabinas.setLocation(1280, panelAgregarPasajeros.getY());
                 moverPanelIzquierda(panelSlider.getPanelActual(), panelSlider.getPanelActual().getX(), -1280, 0.06, 1000*1/60);
@@ -311,12 +318,29 @@ public class FramePrincipal extends javax.swing.JFrame {
                 panelSlider.setAnimando(true);
             }
             indiceDeOpcionActual=2;
+            ((PanelFondo)Fondo).moverLogoAEsquinaIzquierda();
         }
-        ((PanelFondo)Fondo).moverLogoAEsquinaIzquierda();
     }//GEN-LAST:event_btnControlDeCabinasMouseReleased
 
     private void btnAbordarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAbordarMouseReleased
-        ((PanelFondo)Fondo).moverLogoAEsquinaIzquierda();
+        if(!panelSlider.getAnimando()){
+            if(panelSlider.getPanelActual().equals(panelAgregarPasajeros)) panelAgregarPasajeros.desactivarCampos();
+            if(indiceDeOpcionActual<3){
+                panelAbordarPasajeros.setLocation(1280, panelAbordarPasajeros.getY());
+                moverPanelIzquierda(panelSlider.getPanelActual(), panelSlider.getPanelActual().getX(), -1280, 0.06, 1000*1/60);
+                moverPanelIzquierda(panelAbordarPasajeros, panelAbordarPasajeros.getX(), 0, 0.06, 1000*1/60);
+                panelSlider.setPanelActual(panelAbordarPasajeros);
+                panelSlider.setAnimando(true);
+            }else if(indiceDeOpcionActual>3){
+                panelAbordarPasajeros.setLocation(-1280, panelAbordarPasajeros.getY());
+                moverPanelDerecha(panelSlider.getPanelActual(), panelSlider.getPanelActual().getX(), 1280, 0.06, 1000*1/60);
+                moverPanelDerecha(panelAbordarPasajeros, panelAbordarPasajeros.getX(), 0, 0.06, 1000*1/60);
+                panelSlider.setPanelActual(panelAbordarPasajeros);
+                panelSlider.setAnimando(true);
+            }
+            indiceDeOpcionActual=3;
+            ((PanelFondo)Fondo).moverLogoAEsquinaIzquierda();
+        }
     }//GEN-LAST:event_btnAbordarMouseReleased
 
     private void btnColasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnColasMouseReleased

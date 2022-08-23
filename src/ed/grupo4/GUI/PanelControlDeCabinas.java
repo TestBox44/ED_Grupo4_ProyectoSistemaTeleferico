@@ -6,6 +6,7 @@ package ed.grupo4.GUI;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JTable;
@@ -13,6 +14,7 @@ import javax.swing.UIManager;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 /**
  *
  * @author USER
@@ -41,19 +43,21 @@ public class PanelControlDeCabinas extends javax.swing.JPanel {
         initComponents();
         modeloDeListaDeControlDeCabina=(DefaultTableModel)listaDeControlDeCabinas.getModel();
         setBackground(new Color(0,0,0,0));
-        UIManager.getDefaults().put("TableHeader.cellBorder" , BorderFactory.createEmptyBorder(0,0,0,0));
+        
         nuevoCellRenderer.setHorizontalAlignment(JLabel.CENTER);
-        //listaDeControlDeCabinas.getTableHeader().setBackground(Color.WHITE);
-        //listaDeControlDeCabinas.getTableHeader().setOpaque(true);
-        listaDeControlDeCabinas.setTableHeader(null);
         listaDeControlDeCabinas.setDefaultRenderer(Object.class, nuevoCellRenderer);
+        listaDeControlDeCabinas.getTableHeader().setDefaultRenderer(new RenderDeCabecera(listaDeControlDeCabinas.getTableHeader().getDefaultRenderer()));
+        listaDeControlDeCabinas.getTableHeader().setBackground(Color.WHITE);
+        listaDeControlDeCabinas.getTableHeader().setReorderingAllowed(false);
+        listaDeControlDeCabinas.getTableHeader().setFont(new Font("Arial",Font.BOLD,12));
+        listaDeControlDeCabinas.getTableHeader().setForeground(new Color(0,51,102,255));
+
         jScrollPane2.setBorder(BorderFactory.createEmptyBorder());
         jScrollPane2.getViewport().setBackground(Color.WHITE);
         //modeloDeListaDeControlDeCabina.setValueAt(new JButton("Partir"), 0, 4);
-        //for (int i = 2; i < 10; i++) modeloDeListaDeControlDeCabina.addRow(new Object[]{"Cabina "+i,"C","0/20","0:40",new JButton("Partir")});
-        modeloDeListaDeControlDeCabina.addRow(new Object[]{"Cabina 1","C","0/20","0:40",new JButton("Partir")});
-        
-        
+        for (int i = 2; i < 10; i++) modeloDeListaDeControlDeCabina.addRow(new Object[]{"Cabina "+i,"C","0/20","0:40",new JButton("Partir")});
+        //modeloDeListaDeControlDeCabina.addRow(new Object[]{"Cabina 1","C","0/20","0:40",new JButton("Partir")});
+       
     }
 
     /**
@@ -67,11 +71,6 @@ public class PanelControlDeCabinas extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         listaDeControlDeCabinas = new javax.swing.JTable();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jPanel2 = new PanelImagen("/ed/grupo4/resources/images/Interfaz03/Panel03.1.png");
 
         setPreferredSize(new java.awt.Dimension(1280, 500));
@@ -117,18 +116,6 @@ public class PanelControlDeCabinas extends javax.swing.JPanel {
             listaDeControlDeCabinas.getColumnModel().getColumn(3).setPreferredWidth(55);
         }
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel2.setText("Identificador");
-
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel3.setText("Destino");
-
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel4.setText("Pasajeros");
-
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel5.setText("Retorno");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -140,18 +127,7 @@ public class PanelControlDeCabinas extends javax.swing.JPanel {
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -159,17 +135,9 @@ public class PanelControlDeCabinas extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jLabel1)
-                .addGap(6, 6, 6)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
         );
 
         jPanel2.setPreferredSize(new java.awt.Dimension(501, 376));
@@ -217,14 +185,9 @@ public class PanelControlDeCabinas extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable listaDeControlDeCabinas;
     // End of variables declaration//GEN-END:variables
 }
