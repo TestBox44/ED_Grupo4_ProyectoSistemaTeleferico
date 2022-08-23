@@ -20,7 +20,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     
     public FramePrincipal() {
         initComponents();
-        
+        this.setLocationRelativeTo(null);
         panelInicio.setBounds(0, 0, 1280, 500);
         panelSlider.add(panelInicio);
         panelAgregarPasajeros.setBounds(1280, 0, 1280, 500);
