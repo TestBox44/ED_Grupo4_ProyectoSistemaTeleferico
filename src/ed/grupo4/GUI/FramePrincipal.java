@@ -16,6 +16,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     int indiceDeOpcionActual=0;
     PanelInicio panelInicio=new PanelInicio();
     PanelAgregarPasajeros panelAgregarPasajeros=new PanelAgregarPasajeros();
+    PanelControlDeCabinas panelControlDeCabinas=new PanelControlDeCabinas();
     
     public FramePrincipal() {
         initComponents();
@@ -24,6 +25,8 @@ public class FramePrincipal extends javax.swing.JFrame {
         panelSlider.add(panelInicio);
         panelAgregarPasajeros.setBounds(1280, 0, 1280, 500);
         panelSlider.add(panelAgregarPasajeros);
+        panelControlDeCabinas.setBounds(1280, 0, 1280, 500);
+        panelSlider.add(panelControlDeCabinas);
         panelSlider.setPanelActual(panelInicio);
         //inicio.setLocation(-640,0);
     }
@@ -260,17 +263,28 @@ public class FramePrincipal extends javax.swing.JFrame {
 
     
     private void btnInicioMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioMouseReleased
-
+        if(!panelSlider.getAnimando()){
+            if(indiceDeOpcionActual!=0){
+                moverPanelDerecha(panelSlider.getPanelActual(), panelSlider.getPanelActual().getX(), 1280, 0.06, 1000*1/60);
+                moverPanelDerecha(panelInicio, panelInicio.getX(), 0, 0.06, 1000*1/60);
+                panelSlider.setPanelActual(panelInicio);
+                panelSlider.setAnimando(true);
+            }
+            indiceDeOpcionActual=0;
+        }
+        ((PanelFondo)Fondo).moverLogoAlCentro();
     }//GEN-LAST:event_btnInicioMouseReleased
 
     private void btnAgregarPasajeroMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarPasajeroMouseReleased
         if(!panelSlider.getAnimando()){
             if(indiceDeOpcionActual<1){
+                panelAgregarPasajeros.setLocation(1280, panelAgregarPasajeros.getY());
                 moverPanelIzquierda(panelSlider.getPanelActual(), panelSlider.getPanelActual().getX(), -1280, 0.06, 1000*1/60);
                 moverPanelIzquierda(panelAgregarPasajeros, panelAgregarPasajeros.getX(), 0, 0.06, 1000*1/60);
                 panelSlider.setPanelActual(panelAgregarPasajeros);
                 panelSlider.setAnimando(true);
             }else if(indiceDeOpcionActual>1){
+                panelAgregarPasajeros.setLocation(-1280, panelAgregarPasajeros.getY());
                 moverPanelDerecha(panelSlider.getPanelActual(), panelSlider.getPanelActual().getX(), 1280, 0.06, 1000*1/60);
                 moverPanelDerecha(panelAgregarPasajeros, panelAgregarPasajeros.getX(), 0, 0.06, 1000*1/60);
                 panelSlider.setPanelActual(panelAgregarPasajeros);
@@ -282,6 +296,22 @@ public class FramePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarPasajeroMouseReleased
 
     private void btnControlDeCabinasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnControlDeCabinasMouseReleased
+        if(!panelSlider.getAnimando()){
+            if(indiceDeOpcionActual<2){
+                panelControlDeCabinas.setLocation(1280, panelAgregarPasajeros.getY());
+                moverPanelIzquierda(panelSlider.getPanelActual(), panelSlider.getPanelActual().getX(), -1280, 0.06, 1000*1/60);
+                moverPanelIzquierda(panelControlDeCabinas, panelControlDeCabinas.getX(), 0, 0.06, 1000*1/60);
+                panelSlider.setPanelActual(panelControlDeCabinas);
+                panelSlider.setAnimando(true);
+            }else if(indiceDeOpcionActual>2){
+                panelControlDeCabinas.setLocation(-1280, panelAgregarPasajeros.getY());
+                moverPanelDerecha(panelSlider.getPanelActual(), panelSlider.getPanelActual().getX(), 1280, 0.06, 1000*1/60);
+                moverPanelDerecha(panelControlDeCabinas, panelControlDeCabinas.getX(), 0, 0.06, 1000*1/60);
+                panelSlider.setPanelActual(panelControlDeCabinas);
+                panelSlider.setAnimando(true);
+            }
+            indiceDeOpcionActual=2;
+        }
         ((PanelFondo)Fondo).moverLogoAEsquinaIzquierda();
     }//GEN-LAST:event_btnControlDeCabinasMouseReleased
 

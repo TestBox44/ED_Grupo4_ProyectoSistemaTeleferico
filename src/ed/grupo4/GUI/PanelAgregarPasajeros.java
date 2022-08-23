@@ -37,7 +37,15 @@ public class PanelAgregarPasajeros extends javax.swing.JPanel {
         txtNombre = new javax.swing.JTextField();
         txtEdad = new javax.swing.JTextField();
         txtPeso = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cboDestino = new javax.swing.JComboBox<>();
+        TicketPanel = new PanelImagen("/ed/grupo4/resources/images/Interfaz02/icono_ticket.png");
+        jSeparator1 = new javax.swing.JSeparator();
+        lblCodigoTicket = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        lblNombreTicket = new javax.swing.JLabel();
+        lblTarifa = new javax.swing.JLabel();
+        btnAgregarPasajero = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jPanel2 = new PanelImagen("/ed/grupo4/resources/images/Interfaz02/Interfaz02.2.png");
 
         setPreferredSize(new java.awt.Dimension(1280, 500));
@@ -78,11 +86,79 @@ public class PanelAgregarPasajeros extends javax.swing.JPanel {
         txtPeso.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
         txtPeso.setForeground(new java.awt.Color(0, 51, 102));
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(0, 51, 102));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "B", "C", "D", "E", "F", "G", "H" }));
-        jComboBox1.setFocusable(false);
+        cboDestino.setBackground(new java.awt.Color(255, 255, 255));
+        cboDestino.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
+        cboDestino.setForeground(new java.awt.Color(0, 51, 102));
+        cboDestino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "B", "C", "D", "E", "F", "G", "H" }));
+        cboDestino.setFocusable(false);
+
+        TicketPanel.setPreferredSize(new java.awt.Dimension(185, 95));
+
+        jSeparator1.setPreferredSize(new java.awt.Dimension(50, 5));
+
+        lblCodigoTicket.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblCodigoTicket.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCodigoTicket.setText("AB-001");
+
+        jSeparator2.setPreferredSize(new java.awt.Dimension(50, 2));
+
+        lblNombreTicket.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblNombreTicket.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNombreTicket.setText("Sebastian Ortiz");
+
+        lblTarifa.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        lblTarifa.setText("S/.15");
+
+        javax.swing.GroupLayout TicketPanelLayout = new javax.swing.GroupLayout(TicketPanel);
+        TicketPanel.setLayout(TicketPanelLayout);
+        TicketPanelLayout.setHorizontalGroup(
+            TicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TicketPanelLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(TicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblTarifa, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(TicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblCodigoTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblNombreTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(50, Short.MAX_VALUE))
+        );
+        TicketPanelLayout.setVerticalGroup(
+            TicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TicketPanelLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(lblCodigoTicket)
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(lblTarifa, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(lblNombreTicket)
+                .addGap(5, 5, 5))
+        );
+
+        btnAgregarPasajero.setBackground(new java.awt.Color(204, 204, 204));
+        btnAgregarPasajero.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
+        btnAgregarPasajero.setForeground(new java.awt.Color(0, 51, 102));
+        btnAgregarPasajero.setText("Agregar Pasajero");
+        btnAgregarPasajero.setBorderPainted(false);
+        btnAgregarPasajero.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregarPasajero.setFocusPainted(false);
+        btnAgregarPasajero.setFocusable(false);
+        btnAgregarPasajero.setRequestFocusEnabled(false);
+
+        jButton2.setBackground(new java.awt.Color(204, 204, 204));
+        jButton2.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 51, 102));
+        jButton2.setText("Limpiar Datos");
+        jButton2.setBorderPainted(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.setFocusPainted(false);
+        jButton2.setFocusable(false);
+        jButton2.setRequestFocusEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -108,8 +184,19 @@ public class PanelAgregarPasajeros extends javax.swing.JPanel {
                                 .addComponent(txtPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(5, 5, 5)
                                 .addComponent(jLabel5))
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(cboDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(112, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(78, 78, 78)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(TicketPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(144, 144, 144))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAgregarPasajero)
+                        .addGap(78, 78, 78))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,8 +219,14 @@ public class PanelAgregarPasajeros extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(168, Short.MAX_VALUE))
+                    .addComponent(cboDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(TicketPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregarPasajero)
+                    .addComponent(jButton2))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         jPanel2.setPreferredSize(new java.awt.Dimension(351, 376));
@@ -173,7 +266,10 @@ public class PanelAgregarPasajeros extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JPanel TicketPanel;
+    private javax.swing.JButton btnAgregarPasajero;
+    private javax.swing.JComboBox<String> cboDestino;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -182,6 +278,11 @@ public class PanelAgregarPasajeros extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblCodigoTicket;
+    private javax.swing.JLabel lblNombreTicket;
+    private javax.swing.JLabel lblTarifa;
     private javax.swing.JTextField txtEdad;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPeso;
