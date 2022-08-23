@@ -13,12 +13,18 @@ public class FramePrincipal extends javax.swing.JFrame {
     /**
      * Creates new form FramePrincipal
      */
-    Inicio inicio=new Inicio();
+    int indiceDeOpcionActual=0;
+    PanelInicio panelInicio=new PanelInicio();
+    PanelAgregarPasajeros panelAgregarPasajeros=new PanelAgregarPasajeros();
+    
     public FramePrincipal() {
         initComponents();
-        inicio.setBounds(0, 0, 1280, 500);
-        panelSlider.add(inicio);
-        panelSlider.setPanelActual(inicio);
+        
+        panelInicio.setBounds(0, 0, 1280, 500);
+        panelSlider.add(panelInicio);
+        panelAgregarPasajeros.setBounds(1280, 0, 1280, 500);
+        panelSlider.add(panelAgregarPasajeros);
+        panelSlider.setPanelActual(panelInicio);
         //inicio.setLocation(-640,0);
     }
 
@@ -33,7 +39,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         Opciones = new PanelImagen("/ed/grupo4/resources/images/Menuopc.png");
         btnInicio = new PanelImagen("/ed/grupo4/resources/images/inicio3.png");
         btnAgregarPasajero = new PanelImagen("/ed/grupo4/resources/images/agregar3.png");
-        btnControlDeCabinas = new PanelImagen("/ed/grupo4/resources/images/agregar3.png");
+        btnControlDeCabinas = new PanelImagen("/ed/grupo4/resources/images/GestionDeCabina.png");
         btnAbordar = new PanelImagen("/ed/grupo4/resources/images/abordar.png");
         btnColas = new PanelImagen("/ed/grupo4/resources/images/cola.png");
         btnAdministrador = new PanelImagen("/ed/grupo4/resources/images/Administrador.png");
@@ -254,12 +260,24 @@ public class FramePrincipal extends javax.swing.JFrame {
 
     
     private void btnInicioMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioMouseReleased
-        panelSlider.moverPanelDerecha(inicio, inicio.getX(), 0, 0.06, 1000*1/60);
-        ((PanelFondo)Fondo).moverLogoAlCentro();
+
     }//GEN-LAST:event_btnInicioMouseReleased
 
     private void btnAgregarPasajeroMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarPasajeroMouseReleased
-        panelSlider.moverPanelIzquierda(inicio, inicio.getX(), -1280, 0.06, 1000*1/60);
+        if(!panelSlider.getAnimando()){
+            if(indiceDeOpcionActual<1){
+                moverPanelIzquierda(panelSlider.getPanelActual(), panelSlider.getPanelActual().getX(), -1280, 0.06, 1000*1/60);
+                moverPanelIzquierda(panelAgregarPasajeros, panelAgregarPasajeros.getX(), 0, 0.06, 1000*1/60);
+                panelSlider.setPanelActual(panelAgregarPasajeros);
+                panelSlider.setAnimando(true);
+            }else if(indiceDeOpcionActual>1){
+                moverPanelDerecha(panelSlider.getPanelActual(), panelSlider.getPanelActual().getX(), 1280, 0.06, 1000*1/60);
+                moverPanelDerecha(panelAgregarPasajeros, panelAgregarPasajeros.getX(), 0, 0.06, 1000*1/60);
+                panelSlider.setPanelActual(panelAgregarPasajeros);
+                panelSlider.setAnimando(true);
+            }
+            indiceDeOpcionActual=1;
+        }
         ((PanelFondo)Fondo).moverLogoAEsquinaIzquierda();
     }//GEN-LAST:event_btnAgregarPasajeroMouseReleased
 
@@ -282,7 +300,60 @@ public class FramePrincipal extends javax.swing.JFrame {
     private void btnAdministradorMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdministradorMouseReleased
         ((PanelFondo)Fondo).moverLogoAlCentro();
     }//GEN-LAST:event_btnAdministradorMouseReleased
-
+    
+    public void moverPanelDerecha(JPanel panel,int posInicio, int posFin, double velocidad,long delay){
+        if(!panelSlider.getAnimando()&&posInicio<posFin){
+            new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        double rad=0;
+                        int desp=posFin-posInicio;
+                        while(rad<Math.PI/2){
+                            rad+=velocidad;
+                            rad=rad>Math.PI/2?Math.PI/2:rad;
+                            panel.setLocation(posInicio+(int)(desp*Math.sin(rad)),panel.getY());
+                            panelSlider.repaint();
+                            panel.repaint();
+                            repaint();
+                            try {
+                                Thread.sleep(delay);
+                            } catch (InterruptedException ex) {
+                            }
+                        }
+                        panelSlider.setAnimando(false);
+                    }
+                }).start();
+        }else{
+            System.out.println("No en posicion de animar");
+        }
+    }
+    public void moverPanelIzquierda(JPanel panel,int posInicio, int posFin, double velocidad,long delay){
+        if(!panelSlider.getAnimando()&&posInicio>posFin){
+            new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                    double rad=Math.PI/2;
+                    int desp=posInicio-posFin;
+                    while(rad>0){
+                        rad-=velocidad;
+                        rad=rad<0?0:rad;
+                        panel.setLocation(posInicio-(int)(desp*(Math.cos(rad))),panel.getY());
+                        panelSlider.repaint();
+                        panel.repaint();
+                        repaint();
+                        try {
+                            Thread.sleep(delay);
+                        } catch (InterruptedException ex) {
+                        }
+                    }
+                    panelSlider.setAnimando(false);
+                }
+                }).start();
+        }else{
+            System.out.println("No en posicion de animar");
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */

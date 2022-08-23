@@ -186,7 +186,7 @@
                 <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnControlDeCabinasMouseReleased"/>
               </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new PanelImagen(&quot;/ed/grupo4/resources/images/agregar3.png&quot;)"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new PanelImagen(&quot;/ed/grupo4/resources/images/GestionDeCabina.png&quot;)"/>
               </AuxValues>
 
               <Layout>
