@@ -18,6 +18,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     PanelAgregarPasajeros panelAgregarPasajeros=new PanelAgregarPasajeros();
     PanelControlDeCabinas panelControlDeCabinas=new PanelControlDeCabinas();
     PanelAbordarPasajeros panelAbordarPasajeros=new PanelAbordarPasajeros();
+    PanelGestionDeColas panelGestionDeColas=new PanelGestionDeColas();
     
     public FramePrincipal() {
         initComponents();
@@ -31,6 +32,8 @@ public class FramePrincipal extends javax.swing.JFrame {
         panelSlider.add(panelControlDeCabinas);
         panelAbordarPasajeros.setBounds(1280, 0, 1280, 500);
         panelSlider.add(panelAbordarPasajeros);
+        panelGestionDeColas.setBounds(1280, 0, 1280, 500);
+        panelSlider.add(panelGestionDeColas);
         panelSlider.setPanelActual(panelInicio);
         //inicio.setLocation(-640,0);
     }
@@ -344,7 +347,17 @@ public class FramePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAbordarMouseReleased
 
     private void btnColasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnColasMouseReleased
-        ((PanelFondo)Fondo).moverLogoAEsquinaIzquierda();
+        if(!panelSlider.getAnimando()){
+            if(panelSlider.getPanelActual().equals(panelAgregarPasajeros)) panelAgregarPasajeros.desactivarCampos();
+            if(indiceDeOpcionActual!=4){
+                moverPanelIzquierda(panelSlider.getPanelActual(), panelSlider.getPanelActual().getX(), -1280, 0.06, 1000*1/60);
+                moverPanelIzquierda(panelGestionDeColas, panelGestionDeColas.getX(), 0, 0.06, 1000*1/60);
+                panelSlider.setPanelActual(panelGestionDeColas);
+                panelSlider.setAnimando(true);
+            }
+            indiceDeOpcionActual=4;
+            ((PanelFondo)Fondo).moverLogoAEsquinaIzquierda();
+        }
     }//GEN-LAST:event_btnColasMouseReleased
 
     private void btnSalirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseReleased
