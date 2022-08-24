@@ -57,6 +57,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         panelSlider = new ed.grupo4.GUI.PanelSlider();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         setResizable(false);
 
         Fondo.setLayout(new java.awt.BorderLayout());
