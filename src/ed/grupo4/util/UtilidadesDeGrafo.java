@@ -2,6 +2,7 @@ package ed.grupo4.util;
 
 public class UtilidadesDeGrafo {
     public static final int max=1000;
+    public static final int numeroDeEstaciones=8;
     public static final int pesos[][]={{max,3,1,max,max,max,max,max},
                                         {3,max,5,1,2,max,max,max},
                                         {1,5,max,2,max,2,max,max},

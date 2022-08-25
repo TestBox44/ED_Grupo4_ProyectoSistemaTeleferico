@@ -159,8 +159,24 @@ public class Estacion{
         return tamanio.length;
     }
     
+    public int getNumeroDePersonas(){
+        return pasajerosenestacion;
+    }
+    
+    public int getAforo(){
+        return aforo;
+    }
+    
+    public void setAforo(int aforo){
+        this.aforo=aforo;
+    }
+    
     public Cabina getCabina(int indice){
         return cabinas[indice];
+    }
+    
+    public Pasajero getPasajero(int indiceDeCola, int indiceDePasajero){
+        return ColaPasajeros[indiceDeCola][indiceDePasajero];
     }
 
     public void mostrarColaPasajeros(int nroCola){

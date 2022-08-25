@@ -29,6 +29,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         panelInicio.setBounds(0, 0, 1280, 500);
+        panelInicio.actualizarInformacion();
         panelSlider.add(panelInicio);
         panelAgregarPasajeros.setBounds(1280, 0, 1280, 500);
         panelAgregarPasajeros.desactivarCampos();
@@ -280,6 +281,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         if(!animando){
             if(indiceDeOpcionActual==1) panelAgregarPasajeros.desactivarCampos();
             if(indiceDeOpcionActual!=0){
+                panelInicio.actualizarInformacion();
                 moverPanelDerecha(panelActual, panelActual.getX(), 1280, 0.06, 1000*1/60);
                 moverPanelDerecha(panelInicio, panelInicio.getX(), 0, 0.06, 1000*1/60);
                 panelActual=panelInicio;
@@ -387,6 +389,7 @@ public class FramePrincipal extends javax.swing.JFrame {
             }else{ 
                 if(indiceDeOpcionActual==1) panelAgregarPasajeros.activarCampos();
                 panelGestionDeCabinas.desactivarCampos();
+                panelInicio.actualizarInformacion();
                 modoAdministrador=false;
                 mostrarBotonesDeMenu();
                 ((PanelImagen)Opciones).setImagen("/ed/grupo4/resources/images/Menuopc.png");
@@ -399,6 +402,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnAdministradorMouseReleased
+
     
     public void moverPanelDerecha(JPanel panel,int posInicio, int posFin, double velocidad,long delay){
         if(!animando&&posInicio<posFin){

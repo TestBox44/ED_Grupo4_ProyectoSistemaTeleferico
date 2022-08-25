@@ -4,8 +4,12 @@
  */
 package ed.grupo4.GUI;
 
+import ed.grupo4.main.main;
+import ed.grupo4.model.Cabina;
+import ed.grupo4.model.Pasajero;
 import java.awt.Color;
-
+import ed.grupo4.util.Dijkstra;
+import ed.grupo4.util.UtilidadesDeGrafo;
 /**
  *
  * @author USER
@@ -58,18 +62,18 @@ public class PanelAgregarPasajeros extends javax.swing.JPanel {
         lblNombreTicket = new javax.swing.JLabel();
         lblTarifa = new javax.swing.JLabel();
         btnAgregarPasajero = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnLimpiarDatos = new javax.swing.JButton();
         TicketPanel1 = new PanelImagen("/ed/grupo4/resources/images/Interfaz02/icono_ticket.png");
         jSeparator3 = new javax.swing.JSeparator();
         lblCodigoTicket1 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         lblNombreTicket1 = new javax.swing.JLabel();
-        lblTarifa1 = new javax.swing.JLabel();
+        lblRecorridoOptimo = new javax.swing.JLabel();
         jPanel2 = new PanelImagen("/ed/grupo4/resources/images/Interfaz02/Interfaz02.2.png");
         jPanel3 = new PanelImagen("/ed/grupo4/resources/images/Interfaz02/MAPA2.png");
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        lblRecorridoOptimoMapa = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1280, 500));
 
@@ -121,16 +125,15 @@ public class PanelAgregarPasajeros extends javax.swing.JPanel {
 
         lblCodigoTicket.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblCodigoTicket.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCodigoTicket.setText("AB-001");
+        lblCodigoTicket.setPreferredSize(new java.awt.Dimension(129, 14));
 
         jSeparator2.setPreferredSize(new java.awt.Dimension(50, 2));
 
         lblNombreTicket.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblNombreTicket.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNombreTicket.setText("Sebastian Ortiz");
+        lblNombreTicket.setPreferredSize(new java.awt.Dimension(129, 14));
 
         lblTarifa.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
-        lblTarifa.setText("S/.15");
 
         javax.swing.GroupLayout TicketPanelLayout = new javax.swing.GroupLayout(TicketPanel);
         TicketPanel.setLayout(TicketPanelLayout);
@@ -141,17 +144,17 @@ public class PanelAgregarPasajeros extends javax.swing.JPanel {
                 .addGroup(TicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblTarifa, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(TicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblCodigoTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblCodigoTicket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblNombreTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblNombreTicket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         TicketPanelLayout.setVerticalGroup(
             TicketPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TicketPanelLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addComponent(lblCodigoTicket)
+                .addComponent(lblCodigoTicket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -159,7 +162,7 @@ public class PanelAgregarPasajeros extends javax.swing.JPanel {
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(lblNombreTicket)
+                .addComponent(lblNombreTicket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5))
         );
 
@@ -172,16 +175,26 @@ public class PanelAgregarPasajeros extends javax.swing.JPanel {
         btnAgregarPasajero.setFocusPainted(false);
         btnAgregarPasajero.setFocusable(false);
         btnAgregarPasajero.setRequestFocusEnabled(false);
+        btnAgregarPasajero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarPasajeroActionPerformed(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(204, 204, 204));
-        jButton2.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 51, 102));
-        jButton2.setText("Limpiar Datos");
-        jButton2.setBorderPainted(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setFocusPainted(false);
-        jButton2.setFocusable(false);
-        jButton2.setRequestFocusEnabled(false);
+        btnLimpiarDatos.setBackground(new java.awt.Color(204, 204, 204));
+        btnLimpiarDatos.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
+        btnLimpiarDatos.setForeground(new java.awt.Color(0, 51, 102));
+        btnLimpiarDatos.setText("Limpiar Datos");
+        btnLimpiarDatos.setBorderPainted(false);
+        btnLimpiarDatos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLimpiarDatos.setFocusPainted(false);
+        btnLimpiarDatos.setFocusable(false);
+        btnLimpiarDatos.setRequestFocusEnabled(false);
+        btnLimpiarDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarDatosActionPerformed(evt);
+            }
+        });
 
         TicketPanel1.setPreferredSize(new java.awt.Dimension(185, 95));
 
@@ -197,8 +210,8 @@ public class PanelAgregarPasajeros extends javax.swing.JPanel {
         lblNombreTicket1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNombreTicket1.setText("Perú Skyway");
 
-        lblTarifa1.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
-        lblTarifa1.setText("ABCDEFGH");
+        lblRecorridoOptimo.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        lblRecorridoOptimo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout TicketPanel1Layout = new javax.swing.GroupLayout(TicketPanel1);
         TicketPanel1.setLayout(TicketPanel1Layout);
@@ -207,7 +220,7 @@ public class PanelAgregarPasajeros extends javax.swing.JPanel {
             .addGroup(TicketPanel1Layout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addGroup(TicketPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblTarifa1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRecorridoOptimo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(TicketPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(lblCodigoTicket1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -223,7 +236,7 @@ public class PanelAgregarPasajeros extends javax.swing.JPanel {
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(lblTarifa1, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                .addComponent(lblRecorridoOptimo, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -237,7 +250,7 @@ public class PanelAgregarPasajeros extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(78, 78, 78)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnLimpiarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(btnAgregarPasajero)
                 .addGap(78, 78, 78))
@@ -298,7 +311,7 @@ public class PanelAgregarPasajeros extends javax.swing.JPanel {
                         .addGap(6, 6, 6)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnAgregarPasajero)
-                            .addComponent(jButton2)))
+                            .addComponent(btnLimpiarDatos)))
                     .addComponent(TicketPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
@@ -326,9 +339,8 @@ public class PanelAgregarPasajeros extends javax.swing.JPanel {
         jLabel8.setForeground(new java.awt.Color(0, 51, 102));
         jLabel8.setText("Recorrido Óptimo:");
 
-        jLabel9.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 51, 102));
-        jLabel9.setText("ABCDEFGH");
+        lblRecorridoOptimoMapa.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        lblRecorridoOptimoMapa.setForeground(new java.awt.Color(0, 51, 102));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -345,7 +357,7 @@ public class PanelAgregarPasajeros extends javax.swing.JPanel {
                         .addGap(47, 47, 47)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel9)))
+                        .addComponent(lblRecorridoOptimoMapa)))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -357,7 +369,7 @@ public class PanelAgregarPasajeros extends javax.swing.JPanel {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
+                    .addComponent(lblRecorridoOptimoMapa)
                     .addComponent(jLabel8))
                 .addContainerGap(61, Short.MAX_VALUE))
         );
@@ -384,13 +396,70 @@ public class PanelAgregarPasajeros extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAgregarPasajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPasajeroActionPerformed
+        try{
+            if(main.estacion.numerodecolas()==0) throw new Exception("No hay ninguna cola ni cabina disponible");
+            String nombre=txtNombre.getText();
+            int edad=Integer.parseInt(txtEdad.getText());
+            float peso=Float.parseFloat(txtPeso.getText());
+            char destino=((String)cboDestino.getSelectedItem()).charAt(0);
+            if(nombre.length()!=0){
+                int inicio=0;  // 0=Estacion A, con ayuda del formato ASCII podemos identificar las estaciones como numeros y letras,
+                int fin=destino-65;  //no lo mas optimo pero funcional para este proyecto
+                String recorridoOptimo=Dijkstra.obtenerCaminoMinimo(UtilidadesDeGrafo.numeroDeEstaciones,
+                        inicio, fin, UtilidadesDeGrafo.pesos);
+                char estacionDestinoActual=recorridoOptimo.charAt(1); //La siguiente estacion de destino estara en la posicion 1
+                int indiceDeCola=-1;
+                
+                for(int i=0;i<main.estacion.numerodecolas();i++){
+                    Cabina cabina=main.estacion.getCabina(i);
+                    if(cabina.getDestino().contains(""+estacionDestinoActual)){
+                        indiceDeCola=i;
+                    }
+                }
+                if(indiceDeCola==-1) throw new Exception("No existe ninguna cabina que se diriga al destino especificado");
+                String Ticket;
+                if(main.estacion.tamanioColaPasajeros(indiceDeCola)>0){
+                    Pasajero pasajero=main.estacion.getPasajero(indiceDeCola, main.estacion.tamanioColaPasajeros(indiceDeCola)-1);
+                    int numeroDeTicket=Integer.parseInt(pasajero.getTicket().substring(3, 6))+1;
+                    Ticket=recorridoOptimo.substring(0, 2)+"-"+String.format("%03d", numeroDeTicket);
+                }else{
+                    Ticket=recorridoOptimo.substring(0, 2)+"-001";
+                }
+                lblCodigoTicket.setText(Ticket);
+                lblNombreTicket.setText(nombre);
+                lblTarifa.setText("S/."+(edad>=18?"20":"15"));
+                lblRecorridoOptimo.setText(recorridoOptimo);
+                lblRecorridoOptimoMapa.setText(recorridoOptimo);
+                main.estacion.agregarPasajero(indiceDeCola, nombre, edad, peso, Ticket);
+            }else{
+                throw new Exception("No se ha ingresado el nombre del pasajero");
+            }
+        }catch(NumberFormatException e){
+            System.out.println("La edad o el peso no son validos");
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_btnAgregarPasajeroActionPerformed
+
+    private void btnLimpiarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarDatosActionPerformed
+        txtNombre.setText("");
+        txtEdad.setText("");
+        txtPeso.setText("");
+        lblCodigoTicket.setText("");
+        lblNombreTicket.setText("");
+        lblTarifa.setText("");
+        lblRecorridoOptimo.setText("");
+        lblRecorridoOptimoMapa.setText("");
+    }//GEN-LAST:event_btnLimpiarDatosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel TicketPanel;
     private javax.swing.JPanel TicketPanel1;
     private javax.swing.JButton btnAgregarPasajero;
+    private javax.swing.JButton btnLimpiarDatos;
     private javax.swing.JComboBox<String> cboDestino;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -399,7 +468,6 @@ public class PanelAgregarPasajeros extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -411,8 +479,9 @@ public class PanelAgregarPasajeros extends javax.swing.JPanel {
     private javax.swing.JLabel lblCodigoTicket1;
     private javax.swing.JLabel lblNombreTicket;
     private javax.swing.JLabel lblNombreTicket1;
+    private javax.swing.JLabel lblRecorridoOptimo;
+    private javax.swing.JLabel lblRecorridoOptimoMapa;
     private javax.swing.JLabel lblTarifa;
-    private javax.swing.JLabel lblTarifa1;
     private javax.swing.JTextField txtEdad;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPeso;
