@@ -64,7 +64,6 @@ public class FramePrincipal extends javax.swing.JFrame {
         panelSlider = new ed.grupo4.GUI.PanelSlider();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
         setResizable(false);
 
         Fondo.setLayout(new java.awt.BorderLayout());
@@ -374,21 +373,24 @@ public class FramePrincipal extends javax.swing.JFrame {
 
     private void btnAdministradorMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdministradorMouseReleased
         if(!animando){
-            if(indiceDeOpcionActual==1) panelAgregarPasajeros.desactivarCampos();
             if(!modoAdministrador){
+                if(indiceDeOpcionActual==1) panelAgregarPasajeros.desactivarCampos();
+                panelGestionDeCabinas.activarCampos();
                 modoAdministrador=true;
                 ocultarBotonesDeMenu();
                 ((PanelImagen)Opciones).setImagen("/ed/grupo4/resources/images/Menuopciones.png");
-                moverPanelAbajo(panelActual, panelActual.getY(), -500, 0.1, 1000*1/60);
+                moverPanelAbajo(panelActual, panelActual.getY(), -500, 0.06, 1000*1/60);
                 moverPanelAbajo(panelGestionDeCabinas, panelGestionDeCabinas.getY(), 0, 0.06, 1000*1/60);
                 //panelActual=panelGestionDeCabinas;
                 animando=true;
                 ((PanelFondo)Fondo).moverLogoAlCentro();
             }else{ 
+                if(indiceDeOpcionActual==1) panelAgregarPasajeros.activarCampos();
+                panelGestionDeCabinas.desactivarCampos();
                 modoAdministrador=false;
                 mostrarBotonesDeMenu();
                 ((PanelImagen)Opciones).setImagen("/ed/grupo4/resources/images/Menuopc.png");
-                moverPanelArriba(panelActual, panelActual.getY(), 0, 0.1, 1000*1/60);
+                moverPanelArriba(panelActual, panelActual.getY(), 0, 0.06, 1000*1/60);
                 moverPanelArriba(panelGestionDeCabinas, panelGestionDeCabinas.getY(), 500, 0.06, 1000*1/60);
                 //panelActual=panelGestionDeCabinas;
                 animando=true;

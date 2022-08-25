@@ -4,7 +4,7 @@ public class Pasajero{
     private String nombre;
     private float peso;
     private int edad;
-    private int ticket;
+    private String ticket;
 
     public Pasajero(String nombre, float peso, int edad){
         this.nombre=nombre;
@@ -36,11 +36,11 @@ public class Pasajero{
         return edad;       
     }
 
-    public void setTicket(int ticket){
+    public void setTicket(String ticket){
         this.ticket=ticket;
     }
     
-    public int getTicket(){
+    public String getTicket(){
         return ticket;       
     }
 

@@ -4,6 +4,8 @@
  */
 package ed.grupo4.GUI;
 
+import ed.grupo4.main.main;
+import ed.grupo4.model.Cabina;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.BorderFactory;
@@ -18,6 +20,8 @@ import javax.swing.table.DefaultTableModel;
 public class PanelGestionDeCabinas extends javax.swing.JPanel {
     
     private DefaultTableModel modeloDeTablaDeGestionDeCabina;
+    private boolean modificando=false;
+    private int indiceCabinaSeleccionada=-1;
     
     public PanelGestionDeCabinas() {
         initComponents();
@@ -54,9 +58,21 @@ public class PanelGestionDeCabinas extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaDeGestionDeCabinas = new javax.swing.JTable();
         lblTituloDeCola = new javax.swing.JLabel();
-        btnAñadir = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        jPanel2 = new PanelImagen("/ed/grupo4/resources/images/Interfaz04/Panel04.1.png");
+        tituloPanelAñadirCabina = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtIdentificador = new javax.swing.JTextField();
+        txtNumeroDeAsientos = new javax.swing.JTextField();
+        txtPesoLimite = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        cboDestino = new javax.swing.JComboBox<>();
+        btnAñadirCabina = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1280, 500));
 
@@ -65,45 +81,41 @@ public class PanelGestionDeCabinas extends javax.swing.JPanel {
         tablaDeGestionDeCabinas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         tablaDeGestionDeCabinas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Cabina 01", "10", "400", "En estación", "ABCDEFGH"},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "Identificador", "# Asientos", "Peso límite", "Estado", "Ruta"
+                "Identificador", "# Asientos", "Peso límite", "Estado", "Destino"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tablaDeGestionDeCabinas.setFocusable(false);
         tablaDeGestionDeCabinas.setIntercellSpacing(new java.awt.Dimension(0, 0));
         tablaDeGestionDeCabinas.setRowHeight(32);
         tablaDeGestionDeCabinas.setShowVerticalLines(false);
         jScrollPane1.setViewportView(tablaDeGestionDeCabinas);
         if (tablaDeGestionDeCabinas.getColumnModel().getColumnCount() > 0) {
+            tablaDeGestionDeCabinas.getColumnModel().getColumn(0).setResizable(false);
             tablaDeGestionDeCabinas.getColumnModel().getColumn(0).setPreferredWidth(75);
+            tablaDeGestionDeCabinas.getColumnModel().getColumn(1).setResizable(false);
             tablaDeGestionDeCabinas.getColumnModel().getColumn(1).setPreferredWidth(35);
+            tablaDeGestionDeCabinas.getColumnModel().getColumn(2).setResizable(false);
             tablaDeGestionDeCabinas.getColumnModel().getColumn(2).setPreferredWidth(40);
+            tablaDeGestionDeCabinas.getColumnModel().getColumn(3).setResizable(false);
             tablaDeGestionDeCabinas.getColumnModel().getColumn(3).setPreferredWidth(55);
+            tablaDeGestionDeCabinas.getColumnModel().getColumn(4).setResizable(false);
             tablaDeGestionDeCabinas.getColumnModel().getColumn(4).setPreferredWidth(50);
         }
 
         lblTituloDeCola.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
         lblTituloDeCola.setForeground(new java.awt.Color(0, 51, 102));
-        lblTituloDeCola.setText("Gestion de Cabinas");
-
-        btnAñadir.setBackground(new java.awt.Color(204, 204, 204));
-        btnAñadir.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
-        btnAñadir.setForeground(new java.awt.Color(0, 51, 102));
-        btnAñadir.setText("Añadir");
-        btnAñadir.setBorderPainted(false);
-        btnAñadir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAñadir.setFocusPainted(false);
-        btnAñadir.setFocusable(false);
-        btnAñadir.setRequestFocusEnabled(false);
+        lblTituloDeCola.setText("Gestión de Cabinas");
 
         btnModificar.setBackground(new java.awt.Color(204, 204, 204));
         btnModificar.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
@@ -114,6 +126,11 @@ public class PanelGestionDeCabinas extends javax.swing.JPanel {
         btnModificar.setFocusPainted(false);
         btnModificar.setFocusable(false);
         btnModificar.setRequestFocusEnabled(false);
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setBackground(new java.awt.Color(204, 204, 204));
         btnEliminar.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
@@ -124,6 +141,11 @@ public class PanelGestionDeCabinas extends javax.swing.JPanel {
         btnEliminar.setFocusPainted(false);
         btnEliminar.setFocusable(false);
         btnEliminar.setRequestFocusEnabled(false);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -135,9 +157,7 @@ public class PanelGestionDeCabinas extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnAñadir, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(30, 30, 30)
@@ -153,41 +173,273 @@ public class PanelGestionDeCabinas extends javax.swing.JPanel {
                 .addContainerGap(31, Short.MAX_VALUE)
                 .addComponent(lblTituloDeCola)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAñadir)
                     .addComponent(btnModificar)
                     .addComponent(btnEliminar))
-                .addGap(12, 12, 12))
+                .addGap(22, 22, 22))
+        );
+
+        jPanel2.setPreferredSize(new java.awt.Dimension(301, 301));
+
+        tituloPanelAñadirCabina.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
+        tituloPanelAñadirCabina.setForeground(new java.awt.Color(0, 51, 102));
+        tituloPanelAñadirCabina.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloPanelAñadirCabina.setText("Ingresar Nueva Cabina");
+
+        jLabel2.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel2.setText("Identificador:");
+
+        jLabel3.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel3.setText("# Asientos:");
+
+        jLabel4.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel4.setText("Peso límite:");
+
+        jLabel5.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel5.setText("Destino:");
+
+        txtIdentificador.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
+        txtIdentificador.setForeground(new java.awt.Color(0, 51, 102));
+
+        txtNumeroDeAsientos.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
+        txtNumeroDeAsientos.setForeground(new java.awt.Color(0, 51, 102));
+
+        txtPesoLimite.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
+        txtPesoLimite.setForeground(new java.awt.Color(0, 51, 102));
+
+        jLabel6.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel6.setText("Kg");
+
+        cboDestino.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
+        cboDestino.setForeground(new java.awt.Color(0, 51, 102));
+        cboDestino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "B", "C" }));
+        cboDestino.setFocusable(false);
+        cboDestino.setRequestFocusEnabled(false);
+
+        btnAñadirCabina.setBackground(new java.awt.Color(204, 204, 204));
+        btnAñadirCabina.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
+        btnAñadirCabina.setForeground(new java.awt.Color(0, 51, 102));
+        btnAñadirCabina.setText("Añadir");
+        btnAñadirCabina.setBorderPainted(false);
+        btnAñadirCabina.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAñadirCabina.setFocusPainted(false);
+        btnAñadirCabina.setFocusable(false);
+        btnAñadirCabina.setRequestFocusEnabled(false);
+        btnAñadirCabina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAñadirCabinaActionPerformed(evt);
+            }
+        });
+
+        btnLimpiar.setBackground(new java.awt.Color(204, 204, 204));
+        btnLimpiar.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
+        btnLimpiar.setForeground(new java.awt.Color(0, 51, 102));
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.setBorderPainted(false);
+        btnLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLimpiar.setFocusPainted(false);
+        btnLimpiar.setFocusable(false);
+        btnLimpiar.setRequestFocusEnabled(false);
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNumeroDeAsientos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(txtPesoLimite, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel6))
+                            .addComponent(cboDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAñadirCabina, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(32, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addComponent(tituloPanelAñadirCabina, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(tituloPanelAñadirCabina)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtNumeroDeAsientos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtPesoLimite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(cboDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAñadirCabina)
+                    .addComponent(btnLimpiar))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(390, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(209, 209, 209)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(389, 389, 389))
+                .addGap(58, 58, 58)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(211, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(94, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAñadirCabinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirCabinaActionPerformed
+        try{
+            String identificador=txtIdentificador.getText();
+            int numeroDeAsientos=Integer.parseInt(txtNumeroDeAsientos.getText());
+            float pesoLimite=Float.parseFloat(txtPesoLimite.getText());
+            String destino=(String)cboDestino.getSelectedItem();
+            if(identificador.length()>0){
+                if(modificando) {
+                    main.estacion.modificarCabina(indiceCabinaSeleccionada ,identificador, numeroDeAsientos, pesoLimite, destino);
+                    indiceCabinaSeleccionada=-1;
+                    btnAñadirCabina.setText("Añadir");
+                    modificando=false;
+                    txtIdentificador.setText("");
+                    txtNumeroDeAsientos.setText("");
+                    txtPesoLimite.setText("");
+                    tituloPanelAñadirCabina.setText("Ingresar Nueva Cabina");
+                }
+                else 
+                    main.estacion.agregarCabina(identificador, pesoLimite, numeroDeAsientos,destino);
+                actualizarInformacion();
+            }else{
+                throw new Exception("No se ha colocado un identificador");
+            }
+        }
+        catch(NumberFormatException e){
+            System.out.println("Numero de asientos o peso limite no son validos");
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_btnAñadirCabinaActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        int indice=tablaDeGestionDeCabinas.getSelectedRow();
+        if(indice>=0){
+            main.estacion.eliminarCabina(indice);
+            actualizarInformacion();
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        txtIdentificador.setText("");
+        txtNumeroDeAsientos.setText("");
+        txtPesoLimite.setText("");
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        indiceCabinaSeleccionada=tablaDeGestionDeCabinas.getSelectedRow();
+        if(indiceCabinaSeleccionada>=0){
+            tituloPanelAñadirCabina.setText("Modificar cabina");
+            Cabina cabina=main.estacion.getCabina(indiceCabinaSeleccionada);
+            txtIdentificador.setText(cabina.getIdentificador());
+            txtNumeroDeAsientos.setText(""+cabina.getMaxAsientos());
+            txtPesoLimite.setText(""+cabina.getPesoMaximo());
+            cboDestino.setSelectedItem(cabina.getDestino());
+            modificando=true;
+            btnAñadirCabina.setText("Guardar");
+        }
+    }//GEN-LAST:event_btnModificarActionPerformed
+    
+    public void desactivarCampos(){
+        tablaDeGestionDeCabinas.clearSelection();
+        tablaDeGestionDeCabinas.setEnabled(false);
+        txtIdentificador.setEnabled(false);
+        txtNumeroDeAsientos.setEnabled(false);
+        txtPesoLimite.setEnabled(false);
+    }
+    
+    public void activarCampos(){
+        tablaDeGestionDeCabinas.setEnabled(true);
+        txtIdentificador.setEnabled(true);
+        txtNumeroDeAsientos.setEnabled(true);
+        txtPesoLimite.setEnabled(true);
+    }
+    
+    public void actualizarInformacion(){
+        modeloDeTablaDeGestionDeCabina.setRowCount(0);
+        for(int i = 0; i<main.estacion.numerodecolas();i++){
+            Cabina cabina= main.estacion.getCabina(i);
+            modeloDeTablaDeGestionDeCabina.addRow(new Object[]{
+                cabina.getIdentificador(),cabina.getMaxAsientos(),cabina.getPesoMaximo(),
+                cabina.getViajando()?"Viajando":"En estación", cabina.getDestino()
+                });
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAñadir;
+    private javax.swing.JButton btnAñadirCabina;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
+    private javax.swing.JComboBox<String> cboDestino;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTituloDeCola;
     private javax.swing.JTable tablaDeGestionDeCabinas;
+    private javax.swing.JLabel tituloPanelAñadirCabina;
+    private javax.swing.JTextField txtIdentificador;
+    private javax.swing.JTextField txtNumeroDeAsientos;
+    private javax.swing.JTextField txtPesoLimite;
     // End of variables declaration//GEN-END:variables
 }
