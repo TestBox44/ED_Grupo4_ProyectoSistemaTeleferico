@@ -358,8 +358,8 @@ public class FramePrincipal extends javax.swing.JFrame {
         if(!animando){
             if(indiceDeOpcionActual==1) panelAgregarPasajeros.desactivarCampos();
             if(indiceDeOpcionActual!=4){
-                moverPanelIzquierda(panelActual, panelActual.getX(), 0, 0.06, 1000*1/60);
-                moverPanelIzquierda(panelGestionDeColas, panelGestionDeColas.getX(), -1280, 0.06, 1000*1/60);
+                moverPanelIzquierda(panelActual, panelActual.getX(), -1280, 0.06, 1000*1/60);
+                moverPanelIzquierda(panelGestionDeColas, panelGestionDeColas.getX(), 0, 0.06, 1000*1/60);
                 panelActual=panelGestionDeColas;
                 animando=true;
             }
@@ -383,6 +383,7 @@ public class FramePrincipal extends javax.swing.JFrame {
                 moverPanelAbajo(panelGestionDeCabinas, panelGestionDeCabinas.getY(), 0, 0.06, 1000*1/60);
                 //panelActual=panelGestionDeCabinas;
                 animando=true;
+                ((PanelFondo)Fondo).moverLogoAlCentro();
             }else{ 
                 modoAdministrador=false;
                 mostrarBotonesDeMenu();
@@ -391,9 +392,10 @@ public class FramePrincipal extends javax.swing.JFrame {
                 moverPanelArriba(panelGestionDeCabinas, panelGestionDeCabinas.getY(), 500, 0.06, 1000*1/60);
                 //panelActual=panelGestionDeCabinas;
                 animando=true;
+                if(indiceDeOpcionActual!=0) ((PanelFondo)Fondo).moverLogoAEsquinaIzquierda();
             }
         }
-        ((PanelFondo)Fondo).moverLogoAlCentro();
+        
     }//GEN-LAST:event_btnAdministradorMouseReleased
     
     public void moverPanelDerecha(JPanel panel,int posInicio, int posFin, double velocidad,long delay){
