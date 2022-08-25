@@ -62,35 +62,35 @@ public class PanelInicio extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(0, 51, 102));
         jLabel1.setText("Función: Operario");
 
-        jLabel2.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 51, 102));
         jLabel2.setText("Número de Cabinas:");
 
-        lblNumeroCabinas.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
+        lblNumeroCabinas.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
         lblNumeroCabinas.setForeground(new java.awt.Color(0, 51, 102));
         lblNumeroCabinas.setText("4");
 
-        jLabel3.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 51, 102));
         jLabel3.setText("Aforo:");
 
-        lblAforo.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
+        lblAforo.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
         lblAforo.setForeground(new java.awt.Color(0, 51, 102));
         lblAforo.setText("200");
 
-        jLabel4.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 51, 102));
         jLabel4.setText("Número de Personas:");
 
-        lblNumeroDePersonas.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
+        lblNumeroDePersonas.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
         lblNumeroDePersonas.setForeground(new java.awt.Color(0, 51, 102));
         lblNumeroDePersonas.setText("180");
 
-        jLabel5.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 51, 102));
         jLabel5.setText("Límite de Cola:");
 
-        lblLimiteDeCola.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
+        lblLimiteDeCola.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
         lblLimiteDeCola.setForeground(new java.awt.Color(0, 51, 102));
         lblLimiteDeCola.setText("50");
 
@@ -98,7 +98,7 @@ public class PanelInicio extends javax.swing.JPanel {
         jLabel6.setForeground(new java.awt.Color(0, 51, 102));
         jLabel6.setText("PERÚ SKYWAY");
 
-        lblversion.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
+        lblversion.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         lblversion.setForeground(new java.awt.Color(0, 51, 102));
         lblversion.setText("versión 2.0");
 
@@ -106,10 +106,20 @@ public class PanelInicio extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblversion)
+                .addGap(29, 29, 29))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
+                        .addGap(107, 107, 107)
+                        .addComponent(jLabel6))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(116, 116, 116)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel2)
@@ -120,26 +130,17 @@ public class PanelInicio extends javax.swing.JPanel {
                             .addComponent(lblNumeroCabinas, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblAforo, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblNumeroDePersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblLimiteDeCola, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel1))))
-                .addContainerGap(98, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblversion)
-                .addGap(29, 29, 29))
+                            .addComponent(lblLimiteDeCola, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel6)
-                .addGap(28, 28, 28)
+                .addGap(30, 30, 30)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(lblNumeroCabinas))
@@ -155,7 +156,7 @@ public class PanelInicio extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(lblLimiteDeCola))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                 .addComponent(lblversion)
                 .addGap(26, 26, 26))
         );

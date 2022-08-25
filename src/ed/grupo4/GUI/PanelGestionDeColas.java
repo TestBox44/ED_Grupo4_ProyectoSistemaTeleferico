@@ -5,19 +5,30 @@
 package ed.grupo4.GUI;
 
 import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.JPanel;
 
 /**
  *
  * @author USER
  */
 public class PanelGestionDeColas extends javax.swing.JPanel {
-
-    /**
-     * Creates new form PanelGestionDeColas
-     */
+    
+    JPanel panelContenedorDeColas;
+    ArrayList<PanelCola> listaDeColasEnContenedor;
+    
     public PanelGestionDeColas() {
         initComponents();
         setBackground(new Color(0,0,0,0));
+        panelContenedorDeColas=new JPanel();
+        panelContenedorDeColas.setBackground(new Color(0,0,0,0));
+        //panelContenedorDeColas.setPreferredSize(new java.awt.Dimension(1204, 301));
+        panelContenedorDeColas.setBounds(0, 0, 1204, 301);
+        panelContenedorDeColas.setLayout(new javax.swing.GroupLayout(panelContenedorDeColas));
+        /*PanelCola cola=new PanelCola();
+        cola.setBounds(0, 0,376 , 301);
+        panelContenedorDeColas.add(cola);*/
+        panelMarco.add(panelContenedorDeColas);
     }
 
     /**
@@ -27,21 +38,99 @@ public class PanelGestionDeColas extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelMarco = new javax.swing.JPanel();
+        lblAviso = new javax.swing.JLabel();
+        jPanel3 = new PanelImagen("/ed/grupo4/resources/images/Interfaz05/Panel05.3.png");
+        jPanel6 = new PanelImagen("/ed/grupo4/resources/images/Interfaz05/Panel05.2.png");
+
         setPreferredSize(new java.awt.Dimension(1280, 500));
+
+        panelMarco.setBackground(new java.awt.Color(255, 255, 255,0));
+        panelMarco.setPreferredSize(new java.awt.Dimension(1204, 301));
+
+        lblAviso.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
+        lblAviso.setForeground(new java.awt.Color(255, 255, 255));
+        lblAviso.setText("NO HAY CABINAS NI COLAS DISPONIBLES");
+
+        javax.swing.GroupLayout panelMarcoLayout = new javax.swing.GroupLayout(panelMarco);
+        panelMarco.setLayout(panelMarcoLayout);
+        panelMarcoLayout.setHorizontalGroup(
+            panelMarcoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMarcoLayout.createSequentialGroup()
+                .addGap(445, 445, 445)
+                .addComponent(lblAviso)
+                .addContainerGap(445, Short.MAX_VALUE))
+        );
+        panelMarcoLayout.setVerticalGroup(
+            panelMarcoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMarcoLayout.createSequentialGroup()
+                .addGap(135, 135, 135)
+                .addComponent(lblAviso)
+                .addContainerGap(145, Short.MAX_VALUE))
+        );
+
+        jPanel3.setPreferredSize(new java.awt.Dimension(301, 51));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 301, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 51, Short.MAX_VALUE)
+        );
+
+        jPanel6.setPreferredSize(new java.awt.Dimension(301, 51));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 301, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 51, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1280, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(38, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(490, 490, 490))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(panelMarco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(490, 490, 490)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(panelMarco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JLabel lblAviso;
+    private javax.swing.JPanel panelMarco;
     // End of variables declaration//GEN-END:variables
 }
